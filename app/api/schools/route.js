@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import mysql from 'mysql2/promise';
-import fs from 'fs/promises';d
+import fs from 'fs/promises';
 import path from 'path';
 
 async function getDbConnection() {
@@ -64,8 +64,7 @@ export async function POST(request) {
     await db.execute(query, [name, address, city, state, contact, imageUrl, email_id]);
     await db.end();
     return NextResponse.json({ message: 'School added successfully' }, { status: 201 });
-  } catch (error)
-  {
+  } catch (error) {
     console.error('API Error:', error);
     return NextResponse.json({ message: 'Error processing request', error: error.message }, { status: 500 });
   }
